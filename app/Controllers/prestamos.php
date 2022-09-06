@@ -27,7 +27,7 @@ class prestamos extends BaseController{
                 //echo $insertpago;
             }
             $resp = ['status'=> true, 'resp'=>$inserta];
-            //return $this->response->setStatusCode(200)->setJSON($resp);
+            return $this->response->setStatusCode(200)->setJSON($resp);
         }else{
             $resp = ['status' => false, 'responseText' => 'No se ha podido guardar los datos'];
             return $this->response->setStatusCode(200)->setJSON($resp);
