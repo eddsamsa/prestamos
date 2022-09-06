@@ -36,7 +36,11 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Front::main');
-$routes->post('/NewPrestamo', 'prestamos::savePrestamo',  ['as' => 'dataPrestamo']);
+$routes -> get('/getPagosPrestamo/(:num)', 'pagos::getByPrestamo/$1',  ['as' => 'qq']);
+//$routes->post('/NewPrestamo', 'prestamos::savePrestamo',  ['as' => 'dataPrestamo']);
+
+$routes->resource('prestamos', ['controller'=>'prestamos']);
+$routes->resource('pagos', ['controller'=>'pagos']);
 
 /*
  * --------------------------------------------------------------------

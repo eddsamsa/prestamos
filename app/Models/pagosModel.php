@@ -19,4 +19,16 @@ class pagosModel extends Model{
         $prestamo = $this->insert($data, true);
         return $prestamo;
     }
+
+    public function getByIdprestamo($id){
+        $db      = \Config\Database::connect();
+        $builder = $db->table($this->table);
+        //$data= $this->where('idprestamo', $id);
+        $sql = $builder->where(['idprestamo'=>$id]);
+        print_r($sql);
+        return $sql;
+        //return $data;
+        //return "holisss";
+    }
+
 }

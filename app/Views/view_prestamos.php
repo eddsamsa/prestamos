@@ -77,12 +77,42 @@
             form.append("plazo", document.getElementById("plazo").value);
 
             fetch(
-                "/NewPrestamo",{
+                "/prestamos",{
                     method:'POST',
                     body:form
                 }).then(response=> response.json()).then(
                     data=>{
-                        console.log(data);
+                        console.log(data.data.idprestamo);
+                        let aux =data.data.idprestamo;
+                        let interes = ((document.getElementById("tasa").value  / 100) / 360)
+                        let capital = document.getElementById("monto").value ;
+                        for (let i = 1; i <= document.getElementById("plazo").value; i++) {
+                            let importeInteres = capital * interes * 30;
+                            capital = capital - document.getElementById("monto").value  / document.getElementById("plazo").value ;
+
+                            let form1= new FormData();
+                            form1.append("numeroCuota", i);
+                            form1.append("montoCapital", document.getElementById("monto").value /document.getElementById("plazo").value );
+                            form1.append("montoInteres", importeInteres);
+                            form1.append("saldoInsolutoCredito",capital);
+                            form1.append("idprestamo", data.data.idprestamo);
+                            fetch("/pagos",{
+                                method:'POST',
+                                body:form1
+                            }).then(response=>response.json().then(
+                                data=>{
+
+                                }
+                            ));
+                        }
+                        fetch('/getPagosPrestamo/'+aux,{
+                            method:'GET'
+                        }).then(response=>response.json().then(
+                            data=>{
+                                console.log(data);
+                            }
+                        ))
+
                     }
             )
         });
