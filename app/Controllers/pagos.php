@@ -37,14 +37,6 @@ class pagos extends ResourceController{
 
     }
 
-    public function getByPrestamo($id){
-        $pagos= new pagosModel();
-        $data = $pagos->getByIdprestamo($id);
-        //print_r( $data);
-        return $data;
-
-    }
-
     private function gResponse($data, $mensaje, $code){
         if($code==200){
             return $this->respond(array(

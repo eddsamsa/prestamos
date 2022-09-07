@@ -21,14 +21,11 @@ class pagosModel extends Model{
     }
 
     public function getByIdprestamo($id){
-        $db      = \Config\Database::connect();
-        $builder = $db->table($this->table);
-        //$data= $this->where('idprestamo', $id);
-        $sql = $builder->where(['idprestamo'=>$id]);
-        print_r($sql);
-        return $sql;
-        //return $data;
-        //return "holisss";
+        $db = \Config\Database::connect();
+        $query   = $db->query("SELECT * FROM tblpagos WHERE idprestamo=$id ORDER BY numeroCuota ASC");
+        $results = $query->getResult();
+        return $results;
+
     }
 
 }
