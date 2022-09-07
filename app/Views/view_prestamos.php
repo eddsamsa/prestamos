@@ -206,10 +206,10 @@
 
             for (let i = 0; i < json.length; i++) {
                 let tr = tabla.insertRow();
-                let c1 = tr.insertCell().innerHTML = json[i].numeroCuota;
-                let c2 = tr.insertCell().innerHTML = json[i].montoCapital;
-                let c3 = tr.insertCell().innerHTML = json[i].montoInteres;
-                let c4 = tr.insertCell().innerHTML = json[i].saldoInsolutoCredito;
+                let c1 = tr.insertCell().innerHTML = json[i].NumeroDeCuota;
+                let c2 = tr.insertCell().innerHTML = json[i].MontoCapital;
+                let c3 = tr.insertCell().innerHTML = json[i].MontoInteres;
+                let c4 = tr.insertCell().innerHTML = json[i].SaldoInsolutoCredito;
                 let c5 = tr.insertCell().innerHTML = json[i].idpago;
 
             }

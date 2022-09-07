@@ -22,7 +22,8 @@ class pagosModel extends Model{
 
     public function getByIdprestamo($id){
         $db = \Config\Database::connect();
-        $query   = $db->query("SELECT * FROM tblpagos WHERE idprestamo=$id ORDER BY numeroCuota ASC");
+        $query   = $db->query("SELECT numeroCuota AS NumeroDeCuota, montoCapital AS MontoCapital, montoInteres AS MontoInteres,
+                                saldoInsolutoCredito AS SaldoInsolutoCredito, idpago FROM tblpagos WHERE idprestamo=$id ORDER BY numeroCuota ASC");
         $results = $query->getResult();
         return $results;
 
